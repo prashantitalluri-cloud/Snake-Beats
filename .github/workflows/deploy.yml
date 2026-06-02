@@ -26,13 +26,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22 # Using a stable LTS version to keep the runner happy
+          node-version: 22
 
       - name: Install Dependencies
         run: npm install --legacy-peer-deps
 
       - name: Build Project
-        # Using a safer, flat-line execution strategy to prevent shell syntax misinterpretations
         run: npm run build
         env:
           CI: false
