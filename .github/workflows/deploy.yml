@@ -3,6 +3,7 @@ name: Deploy React Game to Pages
 on:
   push:
     branches: ["main"]
+    workflow_dispatch: # <-- Add this exact line right here
 
 permissions:
   contents: read
