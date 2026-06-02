@@ -36,6 +36,7 @@ jobs:
           export TSC_COMPILE_ON_ERROR=true
           export CI=false
           npx tsc --noEmit || true
+          rm -rf dist
           npm run build
 
       - name: Upload Production Artifact
