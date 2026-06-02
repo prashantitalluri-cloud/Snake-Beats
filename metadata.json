@@ -1,0 +1,6 @@
+{
+  "name": "Snake Game & Music Player",
+  "description": "A modern desktop-friendly and mobile-friendly Snake game synced to an interactive Web Audio synthesizer with real-time waveform visualizers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

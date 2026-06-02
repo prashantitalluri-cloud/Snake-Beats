@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Share Tech Mono', monospace;
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-orbitron: 'Share Tech Mono', monospace;
+}
+
+/* Custom scrollbar styling styled in magenta / cyan duo-tone */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #020202;
+}
+::-webkit-scrollbar-thumb {
+  background: #ff00ff;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00f0ff;
+}
+
+/* Screen Tearing effect */
+@keyframes screen-tear {
+  0% {
+    clip-path: inset(0 0 0 0);
+    transform: skew(0deg);
+  }
+  15% {
+    clip-path: inset(5% 0 85% 0);
+    transform: skew(1.5deg);
+  }
+  17% {
+    clip-path: inset(0 0 0 0);
+    transform: skew(0deg);
+  }
+  43% {
+    clip-path: inset(80% 0 3% 0);
+    transform: skew(-2.5deg);
+  }
+  45% {
+    clip-path: inset(0 0 0 0);
+    transform: skew(0deg);
+  }
+  85% {
+    clip-path: inset(45% 0 15% 0);
+    transform: skew(3deg);
+  }
+  87% {
+    clip-path: inset(0 0 0 0);
+    transform: skew(0deg);
+  }
+}
+
+.glitch-tear {
+  animation: screen-tear 4s infinite steps(2, end);
+}
+
+/* CRT static scanline filter */
+.crt-overlay::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
+  aspect-ratio: auto;
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Static flicker animation for background status lines */
+@keyframes static-flicker {
+  0%, 100% { opacity: 0.95; }
+  23% { opacity: 0.95; }
+  24% { opacity: 0.85; }
+  26% { opacity: 0.95; }
+  78% { opacity: 0.95; }
+  79% { opacity: 0.55; }
+  80% { opacity: 0.95; }
+}
+
+.flicker-cyan {
+  text-shadow: 0 0 4px #00f0ff, 0 0 12px rgba(0, 240, 255, 0.6);
+  animation: static-flicker 5s infinite;
+}
+
+.flicker-magenta {
+  text-shadow: 0 0 4px #ff00ff, 0 0 12px rgba(255, 0, 255, 0.6);
+  animation: static-flicker 4s infinite;
+}
+
+/* Raw cybernetic border outline */
+.cyber-panel {
+  border: 2px solid #00f0ff;
+  box-shadow: -4px 4px 0px #ff00ff;
+  background-color: #030305;
+}
+
+.cyber-panel-magenta {
+  border: 2px solid #ff00ff;
+  box-shadow: -4px 4px 0px #00f0ff;
+  background-color: #030305;
+}
+
+/* Cyber arcade quick active button */
+.cyber-button {
+  background: #000;
+  border: 1px solid #00f0ff;
+  color: #00f0ff;
+  transition: all 0.1s ease;
+  box-shadow: -2px 2px 0px #ff00ff;
+}
+.cyber-button:hover {
+  background: #ff00ff;
+  color: #000;
+  border-color: #ff00ff;
+  box-shadow: -2px 2px 0px #00f0ff;
+  transform: translate(1px, -1px);
+}
+.cyber-button:active {
+  transform: translate(-1px, 1px);
+  box-shadow: 0px 0px 0px #00f0ff;
+}
+
+.cyber-button-magenta {
+  background: #000;
+  border: 1px solid #ff00ff;
+  color: #ff00ff;
+  transition: all 0.1s ease;
+  box-shadow: -2px 2px 0px #00f0ff;
+}
+.cyber-button-magenta:hover {
+  background: #00f0ff;
+  color: #000;
+  border-color: #00f0ff;
+  box-shadow: -2px 2px 0px #ff00ff;
+  transform: translate(1px, -1px);
+}
+.cyber-button-magenta:active {
+  transform: translate(-1px, 1px);
+  box-shadow: 0px 0px 0px #ff00ff;
+}
+
+/* Retro Glitch Digital Glyphs & Flickering effects */
+.glitch-glow-green {
+  text-shadow: 
+    0 0 2px #00f0ff, 
+    0 0 8px rgba(0, 240, 255, 0.6), 
+    -2px -1px 0px #ff00ff, 
+    2px 1px 0px #00f0ff;
+  animation: digital-quick-flicker 3s infinite alternate;
+}
+
+.glitch-glow-cyan {
+  text-shadow: 
+    0 0 2px #00f0ff, 
+    0 0 8px rgba(0, 240, 255, 0.4), 
+    -2px -1px 0px #ff00ff, 
+    2px 1px 0px #00f0ff;
+  animation: digital-quick-flicker 5s infinite alternate;
+}
+
+.glitch-glow-speed {
+  text-shadow: 
+    0 0 2px #ff00ff, 
+    0 0 8px rgba(255, 0, 255, 0.4), 
+    -2px -1px 0px #00f0ff, 
+    2px 1px 0px #ff00ff;
+  animation: digital-quick-flicker 4s infinite alternate;
+}
+
+@keyframes digital-quick-flicker {
+  0%, 100% { opacity: 1; filter: skewX(0deg); }
+  92% { opacity: 1; filter: skewX(0deg); }
+  93% { opacity: 0.92; filter: skewX(1deg); }
+  94% { opacity: 1; filter: skewX(0deg); }
+  95% { opacity: 0.82; filter: skewX(-1deg); }
+  96% { opacity: 1; filter: skewX(0deg); }
+}
+
