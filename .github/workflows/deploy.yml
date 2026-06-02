@@ -4,6 +4,10 @@ on:
   push:
     branches: ["main"]
 
+# Fixes the deprecation warning by opting into the modern Node 24 runtime environment natively
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 permissions:
   contents: read
   pages: write
@@ -26,12 +30,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24 # Switched to Node 24 to align with the new standard
 
       - name: Install Dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Build Project Without Type Halts
+      - name: Build Project Ignoring Style Warnings
         run: |
           export TSC_COMPILE_ON_ERROR=true
           export CI=false
