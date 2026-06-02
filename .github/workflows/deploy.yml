@@ -4,10 +4,6 @@ on:
   push:
     branches: ["main"]
 
-# Fixes the deprecation warning by opting into the modern Node 24 runtime environment natively
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-
 permissions:
   contents: read
   pages: write
@@ -30,16 +26,17 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24 # Switched to Node 24 to align with the new standard
+          node-version: 22 # Using a stable LTS version to keep the runner happy
 
       - name: Install Dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Build Project Ignoring Style Warnings
-        run: |
-          export TSC_COMPILE_ON_ERROR=true
-          export CI=false
-          npm run build
+      - name: Build Project
+        # Using a safer, flat-line execution strategy to prevent shell syntax misinterpretations
+        run: npm run build
+        env:
+          CI: false
+          TSC_COMPILE_ON_ERROR: true
 
       - name: Upload Production Artifact
         uses: actions/upload-pages-artifact@v3
